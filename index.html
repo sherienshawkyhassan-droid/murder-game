@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111d">
+  <title>Murder at the Blackwood Manor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app">
+    <section id="welcome" class="screen welcome-screen">
+      <div class="welcome-card">
+        <p class="eyebrow">An Interactive Crime Investigation</p>
+        <h1>Murder at the<br>Blackwood Manor</h1>
+        <p class="intro">A storm. A locked study. Three suspects. One murderer.</p>
+        <label for="detective-name">Detective’s name</label>
+        <input id="detective-name" maxlength="24" placeholder="Enter your name" autocomplete="off">
+        <button id="begin-button" class="primary">Open the case</button>
+        <button id="sound-button" class="sound-toggle" aria-pressed="true">🔊 Sound on</button>
+      </div>
+    </section>
+
+    <section id="game" class="screen game-screen hidden">
+      <header class="case-header">
+        <div>
+          <span class="case-label">Case 001</span>
+          <strong>Murder at the Blackwood Manor</strong>
+        </div>
+        <div class="header-actions">
+          <button id="game-sound-button" class="small-button">🔊</button>
+          <button id="restart-button" class="small-button">Restart</button>
+        </div>
+      </header>
+
+      <div class="evidence-bar">
+        <span>Evidence</span>
+        <div id="evidence-list">No evidence collected</div>
+      </div>
+
+      <article id="scene-card" class="scene-card">
+        <div class="image-wrap">
+          <img id="scene-image" alt="Current investigation scene">
+          <div id="timer-panel" class="timer-panel hidden">
+            <span id="timer-text">Danger</span>
+            <div class="timer-track"><div id="timer-fill"></div></div>
+          </div>
+        </div>
+        <div class="story-panel">
+          <p id="scene-kicker" class="eyebrow">Investigation</p>
+          <h2 id="scene-title"></h2>
+          <p id="scene-text"></p>
+          <div id="choices" class="choices"></div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <audio id="background-audio" src="sounds/atmosphere.ogg" loop preload="auto"></audio>
+  <script src="game.js"></script>
+</body>
+</html>
