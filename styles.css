@@ -1,0 +1,127 @@
+:root {
+  --ink: #07111d;
+  --panel: #101d2a;
+  --panel-soft: #172838;
+  --gold: #d4aa55;
+  --red: #982b35;
+  --cream: #f3eee4;
+  --muted: #9eb0bf;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--cream);
+  background: radial-gradient(circle at top, #183047, var(--ink) 56%);
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+.hidden { display: none !important; }
+.screen { min-height: 100vh; }
+
+.welcome-screen {
+  display: grid;
+  place-items: center;
+  padding: 30px;
+  background: linear-gradient(rgba(4, 9, 16, .52), rgba(4, 9, 16, .92)),
+              url("assets/exterior_crime.jpg") center/cover;
+}
+
+.welcome-card {
+  width: min(680px, 100%);
+  padding: 48px;
+  text-align: center;
+  background: rgba(5, 13, 22, .88);
+  border: 1px solid rgba(212, 170, 85, .55);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, .58);
+  backdrop-filter: blur(8px);
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--gold);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+h1, h2 { font-family: Georgia, serif; color: var(--gold); }
+h1 { margin: 0; font-size: clamp(2.4rem, 7vw, 4.9rem); line-height: .98; }
+h2 { margin: 0 0 14px; font-size: clamp(1.8rem, 4vw, 3rem); }
+.intro { margin: 24px 0 36px; color: #d8e1e8; font-size: 1.08rem; }
+label { display: block; margin: 0 0 8px; color: var(--muted); font-size: .9rem; }
+
+input {
+  width: min(360px, 100%);
+  padding: 14px 16px;
+  color: var(--ink);
+  background: var(--cream);
+  border: 2px solid transparent;
+  outline: none;
+  text-align: center;
+}
+input:focus { border-color: var(--gold); }
+
+.primary, .choice-button {
+  border: 0;
+  color: white;
+  background: linear-gradient(135deg, #7c2028, var(--red));
+  box-shadow: 0 8px 22px rgba(84, 10, 19, .35);
+  transition: transform .18s, filter .18s;
+}
+.primary:hover, .choice-button:hover { transform: translateY(-2px); filter: brightness(1.16); }
+.primary { display: block; margin: 16px auto 0; padding: 14px 28px; font-weight: 800; text-transform: uppercase; }
+.sound-toggle { margin-top: 18px; border: 0; color: var(--muted); background: none; }
+
+.game-screen { padding-bottom: 40px; }
+.case-header, .evidence-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 12px max(18px, calc((100vw - 1180px) / 2));
+}
+.case-header { background: rgba(5, 12, 20, .96); border-bottom: 1px solid #24384a; }
+.case-header strong { display: block; font-family: Georgia, serif; color: var(--gold); }
+.case-label { color: var(--muted); font-size: .72rem; text-transform: uppercase; letter-spacing: .15em; }
+.header-actions { display: flex; gap: 8px; }
+.small-button { padding: 8px 12px; color: #dce6ee; background: var(--panel-soft); border: 1px solid #30465a; }
+
+.evidence-bar { justify-content: flex-start; background: #0c1722; color: #c9d4dd; }
+.evidence-bar > span { color: var(--gold); font-weight: 800; text-transform: uppercase; font-size: .76rem; letter-spacing: .12em; }
+#evidence-list { font-size: .9rem; }
+
+.scene-card {
+  width: min(1180px, calc(100% - 28px));
+  margin: 24px auto 0;
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid #284156;
+  box-shadow: 0 24px 70px rgba(0,0,0,.44);
+}
+.image-wrap { position: relative; background: #02070c; }
+#scene-image { display: block; width: 100%; max-height: 590px; object-fit: cover; transition: opacity .22s; }
+.scene-card.transitioning #scene-image { opacity: .12; }
+
+.timer-panel { position: absolute; left: 20px; right: 20px; bottom: 18px; padding: 10px 14px; background: rgba(17, 5, 8, .88); }
+#timer-text { display: block; margin-bottom: 6px; color: #ffcbc8; font-size: .8rem; font-weight: 800; text-transform: uppercase; }
+.timer-track { height: 8px; background: #45252a; }
+#timer-fill { height: 100%; width: 100%; background: #ed4e55; transition: width .1s linear; }
+
+.story-panel { padding: 30px clamp(20px, 5vw, 58px) 36px; text-align: center; }
+#scene-text { max-width: 900px; margin: 0 auto 24px; color: #dce5eb; font-size: 1.05rem; line-height: 1.7; }
+.choices { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.choice-button { min-width: 210px; max-width: 330px; padding: 13px 18px; font-weight: 700; }
+
+@media (max-width: 650px) {
+  .welcome-card { padding: 35px 22px; }
+  .case-header { align-items: flex-start; }
+  .evidence-bar { align-items: flex-start; flex-direction: column; gap: 5px; }
+  .choice-button { width: 100%; max-width: none; }
+  .story-panel { padding: 24px 18px 30px; }
+}
